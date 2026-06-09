@@ -124,8 +124,8 @@ textarea.filled { background:#f0fff4; }
           <span style="font-size:11px">元整</span>
         </div>
       </td>
-      <td class="lc">合計</td>
-      <td><input type="text" id="total" style="width:100%;font-weight:bold;font-size:12px;" placeholder="NT$0"></td>
+      <td class="lc" style="width:36px">合計</td>
+      <td style="min-width:90px;"><input type="text" id="total" style="width:100%;font-weight:bold;font-size:11px;" placeholder="NT$0"></td>
     </tr>
  
     <!-- Row 5: 簽核 -->
@@ -194,12 +194,25 @@ function autoFillFromURL() {
   }
   if (p.get('pay')) { const cb=document.getElementById('pay_'+p.get('pay').trim()); if(cb){cb.checked=true;filled=true;} }
   if (p.get('date')) {
-    const parts=p.get('date').split(/[\/\-]/);
-    if(parts.length>=3){
-      document.getElementById('year').value=parts[0];
-      document.getElementById('month').value=parseInt(parts[1]);
-      document.getElementById('day').value=parseInt(parts[2].substring(0,2));
-      filled=true;
+    const dateVal = p.get('date');
+    let y, m, d;
+    if (/^\d{10,13}$/.test(dateVal)) {
+      // Unix 時間戳記（秒或毫秒）
+      const ts = dateVal.length === 13 ? parseInt(dateVal) : parseInt(dateVal) * 1000;
+      const dt = new Date(ts);
+      y = dt.getFullYear();
+      m = dt.getMonth() + 1;
+      d = dt.getDate();
+    } else {
+      // 一般格式 2026/06/10 或 2026-06-10
+      const parts = dateVal.split(/[\/\-]/);
+      if (parts.length >= 3) { y=parts[0]; m=parseInt(parts[1]); d=parseInt(parts[2]); }
+    }
+    if (y) {
+      document.getElementById('year').value = y;
+      document.getElementById('month').value = m;
+      document.getElementById('day').value = d;
+      filled = true;
     }
   }
   if (filled) document.getElementById('autofillBanner').style.display='block';
