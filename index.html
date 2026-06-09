@@ -233,11 +233,20 @@ textarea.filled { background:#f0fff4; }
  
 <script>
 function fillAmount(val) {
-  // 移除所有非數字字元（NT$, 逗號等）再拆位
+  // 移除 NT$、逗號等非數字字元
   const num = parseInt(String(val).replace(/[^0-9]/g,'') || 0);
-  const s = String(num).padStart(7,'0');
+  // 用除法正確拆位：千萬,百萬,十萬,萬,千,百,十
+  const digits = [
+    Math.floor(num / 10000000) % 10,  // n1 千萬
+    Math.floor(num / 1000000)  % 10,  // n2 百萬
+    Math.floor(num / 100000)   % 10,  // n3 十萬
+    Math.floor(num / 10000)    % 10,  // n4 萬
+    Math.floor(num / 1000)     % 10,  // n5 千
+    Math.floor(num / 100)      % 10,  // n6 百
+    Math.floor(num / 10)       % 10,  // n7 十
+  ];
   ['n1','n2','n3','n4','n5','n6','n7'].forEach((id,i) => {
-    document.getElementById(id).value = s[i]==='0' ? '' : s[i];
+    document.getElementById(id).value = digits[i] === 0 ? '' : digits[i];
   });
 }
  
