@@ -6,141 +6,79 @@
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:"Microsoft JhengHei","PingFang TC",sans-serif; font-size:13px; background:#f0f0f0; }
- 
 @media print {
   body { background:white; }
-  .controls,.autofill-banner,.lark-guide { display:none !important; }
-  .page { box-shadow:none; margin:0; padding:15mm 15mm; }
+  .controls,.autofill-banner { display:none !important; }
+  .page { box-shadow:none; margin:0; padding:10mm 12mm; }
 }
- 
-.controls {
-  background:#2d5be3; color:white; padding:16px 24px;
-  display:flex; align-items:center; gap:16px; flex-wrap:wrap;
-}
-.controls h2 { font-size:16px; flex:1; }
-.btn { padding:8px 20px; border:none; border-radius:6px; cursor:pointer; font-size:14px; font-weight:bold; }
-.btn:hover { opacity:.85; }
+.controls { background:#2d5be3; color:white; padding:14px 24px; display:flex; align-items:center; gap:16px; }
+.controls h2 { font-size:15px; flex:1; }
+.btn { padding:8px 20px; border:none; border-radius:6px; cursor:pointer; font-size:13px; font-weight:bold; }
 .btn-print { background:white; color:#2d5be3; }
 .btn-clear { background:rgba(255,255,255,.2); color:white; border:1px solid rgba(255,255,255,.4); }
- 
-.autofill-banner {
-  display:none; background:#d1fae5; border-bottom:2px solid #6ee7b7;
-  color:#065f46; padding:10px 24px; font-size:13px;
-  align-items:center; gap:8px; font-weight:600;
-}
- 
-.page {
-  width:210mm; min-height:148mm; margin:24px auto;
-  background:white; padding:16mm 18mm 12mm;
-  box-shadow:0 2px 16px rgba(0,0,0,.12);
-}
- 
-.company-name { font-size:15px; font-weight:bold; margin-bottom:4px; }
-.form-title { text-align:center; font-size:22px; font-weight:bold; margin-bottom:10px; letter-spacing:4px; }
-.header-row { display:flex; align-items:center; gap:16px; margin-bottom:6px; font-size:13px; }
- 
-input[type="text"] {
-  border:none; border-bottom:1px solid #333; outline:none;
-  font-size:13px; font-family:inherit; background:transparent; padding:1px 4px;
-}
+.autofill-banner { display:none; background:#d1fae5; border-bottom:2px solid #6ee7b7; color:#065f46; padding:10px 24px; font-size:13px; font-weight:600; }
+.page { width:210mm; min-height:148mm; margin:24px auto; background:white; padding:12mm 14mm 10mm; box-shadow:0 2px 16px rgba(0,0,0,.12); }
+.company-name { font-size:14px; font-weight:bold; margin-bottom:4px; }
+.form-title { text-align:center; font-size:20px; font-weight:bold; margin-bottom:10px; letter-spacing:4px; }
+.header-row { display:flex; align-items:center; gap:8px; margin-bottom:8px; font-size:13px; }
+input[type="text"] { border:none; border-bottom:1px solid #333; outline:none; font-size:12px; font-family:inherit; background:transparent; padding:1px 3px; }
 input[type="text"]:focus { border-bottom-color:#2d5be3; background:#f0f4ff; }
 input[type="text"].filled { background:#f0fff4; }
- 
-.date-inputs { display:flex; align-items:center; gap:4px; }
- 
-table { width:100%; border-collapse:collapse; margin-top:4px; }
-td { border:1px solid #333; padding:5px 6px; vertical-align:middle; font-size:12.5px; }
-.label-cell { background:#f8f8f8; white-space:nowrap; }
- 
-.cg { display:flex; flex-wrap:wrap; gap:6px 12px; align-items:center; }
-.cg label { display:flex; align-items:center; gap:3px; white-space:nowrap; cursor:pointer; }
-input[type="checkbox"] { width:13px; height:13px; cursor:pointer; }
- 
-.jiazi-row { display:flex; align-items:center; gap:6px; justify-content:center; }
-.jiazi-char { display:inline-block; width:22px; text-align:center; font-size:13px; }
-.jiazi-input {
-  width:22px !important; text-align:center;
-  border:none !important; border-bottom:1px solid #333 !important;
-  font-size:13px; padding:0 !important; background:transparent;
-}
- 
-.sign-row td { text-align:center; height:44px; font-size:13px; }
- 
-.footer { display:flex; justify-content:space-between; margin-top:8px; font-size:12px; color:#444; padding:0 2px; }
-.footer-signs { display:flex; gap:40px; }
- 
-textarea {
-  border:none; outline:none; resize:none;
-  font-family:inherit; font-size:12.5px; background:transparent; width:100%; height:52px;
-}
-textarea:focus { background:#f0f4ff; }
+table { width:100%; border-collapse:collapse; }
+td { border:1px solid #333; padding:4px 6px; vertical-align:middle; font-size:12px; }
+.lc { background:#f8f8f8; text-align:center; font-size:11px; white-space:nowrap; }
+.cg { display:flex; flex-wrap:wrap; gap:4px 10px; align-items:center; }
+.cg label { display:flex; align-items:center; gap:2px; cursor:pointer; font-size:11.5px; white-space:nowrap; }
+input[type="checkbox"] { width:12px; height:12px; }
+.jiazi-row { display:flex; align-items:center; gap:4px; justify-content:center; }
+.jc { display:inline-block; width:20px; text-align:center; font-size:12px; }
+.ji { width:20px !important; text-align:center; border:none !important; border-bottom:1px solid #333 !important; font-size:12px; padding:0 !important; background:transparent; }
+textarea { border:none; outline:none; resize:none; font-family:inherit; font-size:12px; background:transparent; width:100%; height:52px; }
 textarea.filled { background:#f0fff4; }
- 
-.lark-guide {
-  width:210mm; margin:0 auto 32px;
-  background:#fffbeb; border:1.5px dashed #f59e0b;
-  border-radius:12px; padding:18px 24px;
-  font-size:13px; color:#78350f; line-height:1.8;
-}
-.lark-guide h3 { font-size:14px; font-weight:700; margin-bottom:10px; color:#92400e; }
-.lark-guide code {
-  display:block; background:#1e293b; color:#86efac;
-  border-radius:8px; padding:12px 16px;
-  font-size:11.5px; font-family:monospace; line-height:1.9;
-  margin:8px 0; white-space:pre-wrap; word-break:break-all;
-}
-.lark-guide p { margin-bottom:4px; }
-.param-table { width:100%; border-collapse:collapse; margin-top:10px; font-size:12px; }
-.param-table th { background:#fef3c7; padding:6px 10px; text-align:left; border:1px solid #fcd34d; }
-.param-table td { background:white; padding:6px 10px; border:1px solid #fcd34d; }
+.footer { display:flex; justify-content:space-between; margin-top:8px; font-size:11px; color:#444; }
 </style>
 </head>
 <body>
- 
 <div class="controls">
   <h2>🖨️ 元頂集團 付款申請單</h2>
   <button class="btn btn-clear" onclick="clearForm()">清除重填</button>
   <button class="btn btn-print" onclick="window.print()">列印 / 存PDF</button>
 </div>
- 
-<div class="autofill-banner" id="autofillBanner">
-  ✅ 已從 Lark 自動帶入資料，確認無誤後直接列印即可
-</div>
+<div class="autofill-banner" id="autofillBanner">✅ 已從 Lark 自動帶入資料，確認後直接列印即可</div>
  
 <div class="page">
   <div class="company-name">元頂集團</div>
   <div class="form-title">付款申請單</div>
  
- 
-  <div class="header-row" style="margin-bottom:8px">
-    <label>申請日期：</label>
-    <div class="date-inputs">
-      <input type="text" id="year" style="width:44px">年
-      <input type="text" id="month" style="width:30px">月
-      <input type="text" id="day" style="width:30px">日
-    </div>
+  <div class="header-row">
+    申請日期：
+    <input type="text" id="year" style="width:44px">年
+    <input type="text" id="month" style="width:28px">月
+    <input type="text" id="day" style="width:28px">日
   </div>
  
   <table>
+    <!-- Row 1: 部門/支付對象/廠商名稱 -->
     <tr>
-      <td class="label-cell" style="width:60px">申請部門</td>
-      <td style="width:110px"><input type="text" id="dept" style="width:100%"></td>
-      <td class="label-cell" style="width:50px">支付對象</td>
-      <td style="width:110px"><input type="text" id="payee" style="width:100%"></td>
-      <td class="label-cell" style="width:55px">廠商名稱：</td>
-      <td><input type="text" id="vendor" style="width:100%"></td>
-      <td class="label-cell" style="width:36px">編號：</td>
-      <td style="width:90px"><input type="text" id="serial" style="width:100%"></td>
+      <td class="lc" style="width:40px">申請<br>部門</td>
+      <td style="width:16%"><input type="text" id="dept" style="width:100%"></td>
+      <td class="lc" style="width:40px">支付<br>對象</td>
+      <td style="width:16%"><input type="text" id="payee" style="width:100%"></td>
+      <td class="lc" style="width:40px">廠商<br>名稱</td>
+      <td style="width:28%"><input type="text" id="vendor" style="width:100%"></td>
+      <td class="lc" style="width:30px">編號</td>
+      <td style="width:12%"><input type="text" id="serial" style="width:100%"></td>
     </tr>
  
+    <!-- Row 2: 支付性質 + 支付方式 -->
     <tr>
-      <td class="label-cell">支付性質</td>
-      <td colspan="5">
+      <td class="lc">支付<br>性質</td>
+      <td colspan="5" style="padding:5px 8px;">
         <div class="cg">
           <label><input type="checkbox" id="cb_貨款"> 貨款</label>
           <label><input type="checkbox" id="cb_工程款"> 工程款</label>
           <label><input type="checkbox" id="cb_薪工資"> 薪工資</label>
-          <label><input type="checkbox" id="cb_公用事業費用"> 公用事業費用（<input type="text" id="cb_公用detail" style="width:60px">）</label>
+          <label><input type="checkbox" id="cb_公用事業費用"> 公用事業費用（<input type="text" id="cb_公用detail" style="width:50px">）</label>
           <label><input type="checkbox" id="cb_交際"> 交際</label>
         </div>
         <div class="cg" style="margin-top:4px">
@@ -148,54 +86,55 @@ textarea.filled { background:#f0fff4; }
           <label><input type="checkbox" id="cb_勞健退"> 勞健退</label>
           <label><input type="checkbox" id="cb_租金"> 租金</label>
           <label><input type="checkbox" id="cb_差旅"> 差旅</label>
-          <label><input type="checkbox" id="cb_其他"> 其他（<input type="text" id="cb_其他detail" style="width:80px">）</label>
+          <label><input type="checkbox" id="cb_其他"> 其他（<input type="text" id="cb_其他detail" style="width:60px">）</label>
         </div>
       </td>
-      <td class="label-cell" style="text-align:center">支付<br>方式</td>
-      <td>
-        <div style="display:flex;flex-direction:column;gap:3px">
-          <label><input type="checkbox" id="pay_匯款"> 匯款</label>
-          <label><input type="checkbox" id="pay_支票"> 支票</label>
-          <label><input type="checkbox" id="pay_現金"> 現金</label>
-        </div>
+      <td class="lc" style="width:36px">支付<br>方式</td>
+      <td style="padding:5px 6px;">
+        <label style="display:flex;align-items:center;gap:2px;font-size:12px;cursor:pointer;margin-bottom:3px"><input type="checkbox" id="pay_匯款"> 匯款</label>
+        <label style="display:flex;align-items:center;gap:2px;font-size:12px;cursor:pointer;margin-bottom:3px"><input type="checkbox" id="pay_支票"> 支票</label>
+        <label style="display:flex;align-items:center;gap:2px;font-size:12px;cursor:pointer"><input type="checkbox" id="pay_現金"> 現金</label>
       </td>
     </tr>
  
+    <!-- Row 3: 事由 + 備註 -->
     <tr>
-      <td class="label-cell">事由：</td>
-      <td colspan="5" style="vertical-align:top">
-        <textarea id="reason" placeholder="請輸入付款事由"></textarea>
+      <td class="lc">事由</td>
+      <td colspan="5" style="vertical-align:top; padding:5px 6px;">
+        <textarea id="reason"></textarea>
       </td>
-      <td class="label-cell" style="text-align:center">備<br>註</td>
-      <td style="vertical-align:top">
-        <textarea id="remark" style="height:52px"></textarea>
+      <td class="lc">備<br>註</td>
+      <td style="vertical-align:top; padding:5px 6px;">
+        <textarea id="remark"></textarea>
       </td>
     </tr>
  
+    <!-- Row 4: 金額 -->
     <tr>
-      <td class="label-cell" colspan="2">付款總金額：</td>
+      <td class="lc" colspan="2">付款總金額：</td>
       <td colspan="4">
         <div class="jiazi-row">
-          <span class="jiazi-char">仟</span><input type="text" class="jiazi-input" id="n1" maxlength="1">
-          <span class="jiazi-char">佰</span><input type="text" class="jiazi-input" id="n2" maxlength="1">
-          <span class="jiazi-char">拾</span><input type="text" class="jiazi-input" id="n3" maxlength="1">
-          <span class="jiazi-char">萬</span><input type="text" class="jiazi-input" id="n4" maxlength="1">
-          <span class="jiazi-char">仟</span><input type="text" class="jiazi-input" id="n5" maxlength="1">
-          <span class="jiazi-char">佰</span><input type="text" class="jiazi-input" id="n6" maxlength="1">
-          <span class="jiazi-char">拾</span><input type="text" class="jiazi-input" id="n7" maxlength="1">
-          <span class="jiazi-char">元整</span>
+          <span class="jc">仟</span><input type="text" class="ji" id="n1" maxlength="1">
+          <span class="jc">佰</span><input type="text" class="ji" id="n2" maxlength="1">
+          <span class="jc">拾</span><input type="text" class="ji" id="n3" maxlength="1">
+          <span class="jc">萬</span><input type="text" class="ji" id="n4" maxlength="1">
+          <span class="jc">仟</span><input type="text" class="ji" id="n5" maxlength="1">
+          <span class="jc">佰</span><input type="text" class="ji" id="n6" maxlength="1">
+          <span class="jc">拾</span><input type="text" class="ji" id="n7" maxlength="1">
+          <span style="font-size:11px">元整</span>
         </div>
       </td>
-      <td class="label-cell" style="white-space:nowrap">合計</td>
-      <td style="min-width:90px"><input type="text" id="total" style="width:100%;font-size:12px;font-weight:bold;" placeholder="NT$0"></td>
+      <td class="lc">合計</td>
+      <td><input type="text" id="total" style="width:100%;font-weight:bold;font-size:12px;" placeholder="NT$0"></td>
     </tr>
  
+    <!-- Row 5: 簽核 -->
     <tr>
-      <td colspan="8" style="height:70px; border:1px solid #333; padding:0;">
-        <div style="display:flex; height:100%;">
-          <div style="flex:1; padding:8px; font-size:13px; vertical-align:top;">董事長室：</div>
-          <div style="flex:1; padding:8px; font-size:13px; vertical-align:top;">主管：</div>
-          <div style="flex:1; padding:8px; font-size:13px; vertical-align:top;">申請人：<span id="applicant_show"></span></div>
+      <td colspan="8" style="height:65px; padding:6px 10px; vertical-align:top;">
+        <div style="display:flex; width:100%;">
+          <div style="flex:1; font-size:12px;">董事長室：</div>
+          <div style="flex:1; font-size:12px;">主管：</div>
+          <div style="flex:1; font-size:12px;">申請人：<span id="applicant_show"></span></div>
         </div>
       </td>
     </tr>
@@ -203,56 +142,27 @@ textarea.filled { background:#f0fff4; }
  
   <div class="footer">
     <span>版本：01-2020-12</span>
-    <div class="footer-signs">
-      <span>財務部/主管：＿＿＿＿＿</span>
-      <span>出納：＿＿＿＿＿</span>
-      <span>會計：＿＿＿＿＿</span>
+    <div style="display:flex;gap:32px;">
+      <span>財務部/主管：＿＿＿＿</span>
+      <span>出納：＿＿＿＿</span>
+      <span>會計：＿＿＿＿</span>
     </div>
   </div>
-</div>
- 
-<!-- Lark 自動化說明（無參數時顯示） -->
-<div class="lark-guide" id="larkGuide">
-  <h3>📌 給 Lark 管理員：如何設定自動帶入資料</h3>
-  <p>在多維表格「支出明細」→ 自動化 → 當表單新增記錄時，發送以下格式的連結給申請人：</p>
-  <code>付款申請單.html?applicant=Lynn&dept=標案部&payee=XX有限公司&vendor=XX有限公司&reason=購買獎杯&total=15000&nature=差旅&pay=匯款</code>
-  <p style="margin-top:10px"><strong>所有可用參數：</strong></p>
-  <table class="param-table">
-    <tr><th>參數名稱</th><th>說明</th><th>範例</th></tr>
-    <tr><td>applicant</td><td>申請人姓名</td><td>Lynn</td></tr>
-    <tr><td>dept</td><td>申請部門</td><td>標案部</td></tr>
-    <tr><td>payee</td><td>支付對象</td><td>王小明</td></tr>
-    <tr><td>vendor</td><td>廠商名稱</td><td>XX有限公司</td></tr>
-    <tr><td>serial</td><td>編號</td><td>2026-001</td></tr>
-    <tr><td>reason</td><td>事由（支出細項）</td><td>購買獎杯</td></tr>
-    <tr><td>remark</td><td>備註</td><td>含運費</td></tr>
-    <tr><td>total</td><td>合計金額（純數字）</td><td>15000</td></tr>
-    <tr><td>nature</td><td>支付性質（逗號分隔）</td><td>差旅,採購</td></tr>
-    <tr><td>pay</td><td>支付方式</td><td>匯款 或 支票 或 現金</td></tr>
-  </table>
-  <p style="margin-top:10px">✅ 申請人收到連結 → 點開已自動填好 → 確認 → 列印 → 手簽 → 送會計</p>
 </div>
  
 <script>
 function fillAmount(val) {
   const num = parseInt(String(val).replace(/[^0-9]/g,'') || 0);
   const digits = [
-    Math.floor(num / 10000000) % 10,
-    Math.floor(num / 1000000)  % 10,
-    Math.floor(num / 100000)   % 10,
-    Math.floor(num / 10000)    % 10,
-    Math.floor(num / 1000)     % 10,
-    Math.floor(num / 100)      % 10,
-    Math.floor(num / 10)       % 10,
+    Math.floor(num/10000000)%10, Math.floor(num/1000000)%10,
+    Math.floor(num/100000)%10,  Math.floor(num/10000)%10,
+    Math.floor(num/1000)%10,    Math.floor(num/100)%10,
+    Math.floor(num/10)%10,
   ];
-  // 找到第一個非零的位置，之後的0都要顯示
-  let firstNonZero = digits.findIndex(d => d !== 0);
+  let first = digits.findIndex(d => d!==0);
+  if (first === -1) first = 6;
   ['n1','n2','n3','n4','n5','n6','n7'].forEach((id,i) => {
-    if (i < firstNonZero) {
-      document.getElementById(id).value = '';
-    } else {
-      document.getElementById(id).value = String(digits[i]);
-    }
+    document.getElementById(id).value = (i < first) ? '' : String(digits[i]);
   });
 }
  
@@ -262,78 +172,48 @@ function autoFillFromURL() {
   let filled = false;
  
   ['dept','payee','vendor','serial'].forEach(k => {
-    if (p.get(k)) { document.getElementById(k).value = p.get(k); document.getElementById(k).classList.add('filled'); filled = true; }
+    if (p.get(k)) { document.getElementById(k).value=p.get(k); document.getElementById(k).classList.add('filled'); filled=true; }
   });
-  if (p.get('applicant')) { document.getElementById('applicant_show').textContent = p.get('applicant'); filled = true; }
+  if (p.get('applicant')) { document.getElementById('applicant_show').textContent=p.get('applicant'); filled=true; }
   ['reason','remark'].forEach(k => {
     if (p.get(k)) { const el=document.getElementById(k); el.value=p.get(k); el.classList.add('filled'); filled=true; }
   });
   if (p.get('total')) {
-    const rawTotal = p.get('total');
-    // 移除 NT$、逗號、空格等非數字字元
-    const cleanNum = parseInt(rawTotal.replace(/[^0-9]/g,'') || 0);
-    document.getElementById('total').value = 'NT$' + cleanNum.toLocaleString();
+    const num=parseInt(p.get('total').replace(/[^0-9]/g,'')||0);
+    document.getElementById('total').value='NT$'+num.toLocaleString();
     document.getElementById('total').classList.add('filled');
-    fillAmount(cleanNum);
-    filled = true;
+    fillAmount(num); filled=true;
   }
   if (p.get('nature')) {
-    // Lark 多選欄位可能用逗號或頓號分隔，也可能帶空格
-    const natureVal = p.get('nature');
-    // 嘗試多種分隔符
-    const natures = natureVal.split(/[,，、]\s*/);
-    natures.forEach(n => {
-      const trimmed = n.trim();
-      // 直接比對
-      let cb = document.getElementById('cb_'+trimmed);
-      if (cb) { cb.checked=true; filled=true; return; }
-      // 嘗試部分比對（Lark標籤名稱可能有差異）
+    p.get('nature').split(/[,，、]/).forEach(n => {
+      const t=n.trim();
       ['貨款','工程款','薪工資','公用事業費用','交際','稅捐','勞健退','租金','差旅','其他'].forEach(key => {
-        if (trimmed.includes(key) || key.includes(trimmed)) {
-          const cb2 = document.getElementById('cb_'+key);
-          if (cb2) { cb2.checked=true; filled=true; }
-        }
+        if (t.includes(key)||key.includes(t)) { const cb=document.getElementById('cb_'+key); if(cb){cb.checked=true;filled=true;} }
       });
     });
   }
-  if (p.get('pay')) {
-    const cb = document.getElementById('pay_'+p.get('pay').trim());
-    if (cb) { cb.checked=true; filled=true; }
-  }
+  if (p.get('pay')) { const cb=document.getElementById('pay_'+p.get('pay').trim()); if(cb){cb.checked=true;filled=true;} }
   if (p.get('date')) {
-    // 支援 2026/06/10 或 2026-06-10 格式
-    const dateStr = p.get('date');
-    const parts = dateStr.split(/[\/\-]/);
-    if (parts.length >= 3) {
-      document.getElementById('year').value = parts[0];
-      document.getElementById('month').value = parseInt(parts[1]);
-      document.getElementById('day').value = parseInt(parts[2]);
-      filled = true;
+    const parts=p.get('date').split(/[\/\-]/);
+    if(parts.length>=3){
+      document.getElementById('year').value=parts[0];
+      document.getElementById('month').value=parseInt(parts[1]);
+      document.getElementById('day').value=parseInt(parts[2].substring(0,2));
+      filled=true;
     }
   }
- 
-  if (filled) {
-    document.getElementById('autofillBanner').style.display = 'flex';
-    document.getElementById('larkGuide').style.display = 'none';
-  }
+  if (filled) document.getElementById('autofillBanner').style.display='block';
 }
  
 function clearForm() {
-  document.querySelectorAll('input[type="text"]').forEach(i => { i.value=''; i.classList.remove('filled'); });
-  document.querySelectorAll('input[type="checkbox"]').forEach(i => i.checked=false);
-  document.querySelectorAll('textarea').forEach(i => { i.value=''; i.classList.remove('filled'); });
-  document.getElementById('applicant_show').textContent = '';
-  document.getElementById('autofillBanner').style.display = 'none';
-  document.getElementById('year').value = '';
-  document.getElementById('month').value = '';
-  document.getElementById('day').value = '';
- 
+  document.querySelectorAll('input[type="text"]').forEach(i=>{i.value='';i.classList.remove('filled');});
+  document.querySelectorAll('input[type="checkbox"]').forEach(i=>i.checked=false);
+  document.querySelectorAll('textarea').forEach(i=>{i.value='';i.classList.remove('filled');});
+  document.getElementById('applicant_show').textContent='';
+  document.getElementById('autofillBanner').style.display='none';
 }
  
-// 日期預設空白，由 Lark date 參數帶入
- 
-document.getElementById('total').addEventListener('input', function(){ fillAmount(this.value); });
- 
+document.getElementById('total').addEventListener('input',function(){fillAmount(this.value);});
 autoFillFromURL();
 </script>
 </body>
