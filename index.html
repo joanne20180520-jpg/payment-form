@@ -6,13 +6,13 @@
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:"Microsoft JhengHei","PingFang TC",sans-serif; font-size:13px; background:#f0f0f0; }
-
+ 
 @media print {
   body { background:white; }
   .controls,.autofill-banner,.lark-guide { display:none !important; }
   .page { box-shadow:none; margin:0; padding:15mm 15mm; }
 }
-
+ 
 .controls {
   background:#2d5be3; color:white; padding:16px 24px;
   display:flex; align-items:center; gap:16px; flex-wrap:wrap;
@@ -22,40 +22,40 @@ body { font-family:"Microsoft JhengHei","PingFang TC",sans-serif; font-size:13px
 .btn:hover { opacity:.85; }
 .btn-print { background:white; color:#2d5be3; }
 .btn-clear { background:rgba(255,255,255,.2); color:white; border:1px solid rgba(255,255,255,.4); }
-
+ 
 .autofill-banner {
   display:none; background:#d1fae5; border-bottom:2px solid #6ee7b7;
   color:#065f46; padding:10px 24px; font-size:13px;
   align-items:center; gap:8px; font-weight:600;
 }
-
+ 
 .page {
   width:210mm; min-height:148mm; margin:24px auto;
   background:white; padding:16mm 18mm 12mm;
   box-shadow:0 2px 16px rgba(0,0,0,.12);
 }
-
+ 
 .company-name { font-size:15px; font-weight:bold; margin-bottom:4px; }
 .form-title { text-align:center; font-size:22px; font-weight:bold; margin-bottom:10px; letter-spacing:4px; }
 .header-row { display:flex; align-items:center; gap:16px; margin-bottom:6px; font-size:13px; }
-
+ 
 input[type="text"] {
   border:none; border-bottom:1px solid #333; outline:none;
   font-size:13px; font-family:inherit; background:transparent; padding:1px 4px;
 }
 input[type="text"]:focus { border-bottom-color:#2d5be3; background:#f0f4ff; }
 input[type="text"].filled { background:#f0fff4; }
-
+ 
 .date-inputs { display:flex; align-items:center; gap:4px; }
-
+ 
 table { width:100%; border-collapse:collapse; margin-top:4px; }
 td { border:1px solid #333; padding:5px 6px; vertical-align:middle; font-size:12.5px; }
 .label-cell { background:#f8f8f8; white-space:nowrap; }
-
+ 
 .cg { display:flex; flex-wrap:wrap; gap:6px 12px; align-items:center; }
 .cg label { display:flex; align-items:center; gap:3px; white-space:nowrap; cursor:pointer; }
 input[type="checkbox"] { width:13px; height:13px; cursor:pointer; }
-
+ 
 .jiazi-row { display:flex; align-items:center; gap:6px; justify-content:center; }
 .jiazi-char { display:inline-block; width:22px; text-align:center; font-size:13px; }
 .jiazi-input {
@@ -63,19 +63,19 @@ input[type="checkbox"] { width:13px; height:13px; cursor:pointer; }
   border:none !important; border-bottom:1px solid #333 !important;
   font-size:13px; padding:0 !important; background:transparent;
 }
-
+ 
 .sign-row td { text-align:center; height:44px; font-size:13px; }
-
+ 
 .footer { display:flex; justify-content:space-between; margin-top:8px; font-size:12px; color:#444; padding:0 2px; }
 .footer-signs { display:flex; gap:40px; }
-
+ 
 textarea {
   border:none; outline:none; resize:none;
   font-family:inherit; font-size:12.5px; background:transparent; width:100%; height:52px;
 }
 textarea:focus { background:#f0f4ff; }
 textarea.filled { background:#f0fff4; }
-
+ 
 .lark-guide {
   width:210mm; margin:0 auto 32px;
   background:#fffbeb; border:1.5px dashed #f59e0b;
@@ -96,21 +96,21 @@ textarea.filled { background:#f0fff4; }
 </style>
 </head>
 <body>
-
+ 
 <div class="controls">
   <h2>🖨️ 元頂集團 付款申請單</h2>
   <button class="btn btn-clear" onclick="clearForm()">清除重填</button>
   <button class="btn btn-print" onclick="window.print()">列印 / 存PDF</button>
 </div>
-
+ 
 <div class="autofill-banner" id="autofillBanner">
   ✅ 已從 Lark 自動帶入資料，確認無誤後直接列印即可
 </div>
-
+ 
 <div class="page">
   <div class="company-name">元頂集團</div>
   <div class="form-title">付款申請單</div>
-
+ 
   <div class="header-row">
     <label>公司：<input type="text" id="company" style="width:160px"></label>
   </div>
@@ -122,7 +122,7 @@ textarea.filled { background:#f0fff4; }
       <input type="text" id="day" style="width:30px">日
     </div>
   </div>
-
+ 
   <table>
     <tr>
       <td class="label-cell" style="width:60px">申請部門</td>
@@ -134,7 +134,7 @@ textarea.filled { background:#f0fff4; }
       <td class="label-cell" style="width:36px">編號：</td>
       <td style="width:90px"><input type="text" id="serial" style="width:100%"></td>
     </tr>
-
+ 
     <tr>
       <td class="label-cell">支付性質</td>
       <td colspan="5">
@@ -162,7 +162,7 @@ textarea.filled { background:#f0fff4; }
         </div>
       </td>
     </tr>
-
+ 
     <tr>
       <td class="label-cell">事由：</td>
       <td colspan="5" style="vertical-align:top">
@@ -173,7 +173,7 @@ textarea.filled { background:#f0fff4; }
         <textarea id="remark" style="height:52px"></textarea>
       </td>
     </tr>
-
+ 
     <tr>
       <td class="label-cell" colspan="2">付款總金額：</td>
       <td colspan="4">
@@ -191,14 +191,14 @@ textarea.filled { background:#f0fff4; }
       <td class="label-cell">合計</td>
       <td><input type="text" id="total" style="width:100%" placeholder="NT$"></td>
     </tr>
-
+ 
     <tr class="sign-row">
       <td colspan="2">董事長室：</td>
       <td colspan="3">主管：</td>
       <td colspan="3">申請人：<span id="applicant_show"></span></td>
     </tr>
   </table>
-
+ 
   <div class="footer">
     <span>版本：01-2020-12</span>
     <div class="footer-signs">
@@ -208,7 +208,7 @@ textarea.filled { background:#f0fff4; }
     </div>
   </div>
 </div>
-
+ 
 <!-- Lark 自動化說明（無參數時顯示） -->
 <div class="lark-guide" id="larkGuide">
   <h3>📌 給 Lark 管理員：如何設定自動帶入資料</h3>
@@ -230,20 +230,22 @@ textarea.filled { background:#f0fff4; }
   </table>
   <p style="margin-top:10px">✅ 申請人收到連結 → 點開已自動填好 → 確認 → 列印 → 手簽 → 送會計</p>
 </div>
-
+ 
 <script>
 function fillAmount(val) {
-  const s = String(parseInt(String(val).replace(/[^0-9]/g,'') || 0)).padStart(7,'0');
+  // 移除所有非數字字元（NT$, 逗號等）再拆位
+  const num = parseInt(String(val).replace(/[^0-9]/g,'') || 0);
+  const s = String(num).padStart(7,'0');
   ['n1','n2','n3','n4','n5','n6','n7'].forEach((id,i) => {
     document.getElementById(id).value = s[i]==='0' ? '' : s[i];
   });
 }
-
+ 
 function autoFillFromURL() {
   const p = new URLSearchParams(window.location.search);
   if (!p.toString()) return;
   let filled = false;
-
+ 
   ['dept','payee','vendor','serial'].forEach(k => {
     if (p.get(k)) { document.getElementById(k).value = p.get(k); document.getElementById(k).classList.add('filled'); filled = true; }
   });
@@ -252,29 +254,44 @@ function autoFillFromURL() {
     if (p.get(k)) { const el=document.getElementById(k); el.value=p.get(k); el.classList.add('filled'); filled=true; }
   });
   if (p.get('total')) {
-    const n = parseInt(p.get('total'));
-    document.getElementById('total').value = 'NT$' + n.toLocaleString();
+    const rawTotal = p.get('total');
+    // 移除 NT$、逗號、空格等非數字字元
+    const cleanNum = parseInt(rawTotal.replace(/[^0-9]/g,'') || 0);
+    document.getElementById('total').value = 'NT$' + cleanNum.toLocaleString();
     document.getElementById('total').classList.add('filled');
-    fillAmount(n);
+    fillAmount(cleanNum);
     filled = true;
   }
   if (p.get('nature')) {
-    p.get('nature').split(',').forEach(n => {
-      const cb = document.getElementById('cb_'+n.trim());
-      if (cb) { cb.checked=true; filled=true; }
+    // Lark 多選欄位可能用逗號或頓號分隔，也可能帶空格
+    const natureVal = p.get('nature');
+    // 嘗試多種分隔符
+    const natures = natureVal.split(/[,，、]\s*/);
+    natures.forEach(n => {
+      const trimmed = n.trim();
+      // 直接比對
+      let cb = document.getElementById('cb_'+trimmed);
+      if (cb) { cb.checked=true; filled=true; return; }
+      // 嘗試部分比對（Lark標籤名稱可能有差異）
+      ['貨款','工程款','薪工資','公用事業費用','交際','稅捐','勞健退','租金','差旅','其他'].forEach(key => {
+        if (trimmed.includes(key) || key.includes(trimmed)) {
+          const cb2 = document.getElementById('cb_'+key);
+          if (cb2) { cb2.checked=true; filled=true; }
+        }
+      });
     });
   }
   if (p.get('pay')) {
     const cb = document.getElementById('pay_'+p.get('pay').trim());
     if (cb) { cb.checked=true; filled=true; }
   }
-
+ 
   if (filled) {
     document.getElementById('autofillBanner').style.display = 'flex';
     document.getElementById('larkGuide').style.display = 'none';
   }
 }
-
+ 
 function clearForm() {
   document.querySelectorAll('input[type="text"]').forEach(i => { i.value=''; i.classList.remove('filled'); });
   document.querySelectorAll('input[type="checkbox"]').forEach(i => i.checked=false);
@@ -287,16 +304,16 @@ function clearForm() {
   document.getElementById('day').value = t.getDate();
   document.getElementById('company').value = '瑩墨股份有限公司';
 }
-
+ 
 // 預設值
 document.getElementById('company').value = '瑩墨股份有限公司';
 const t = new Date();
 document.getElementById('year').value = t.getFullYear();
 document.getElementById('month').value = t.getMonth()+1;
 document.getElementById('day').value = t.getDate();
-
+ 
 document.getElementById('total').addEventListener('input', function(){ fillAmount(this.value); });
-
+ 
 autoFillFromURL();
 </script>
 </body>
