@@ -111,9 +111,7 @@ textarea.filled { background:#f0fff4; }
   <div class="company-name">元頂集團</div>
   <div class="form-title">付款申請單</div>
  
-  <div class="header-row">
-    <label>公司：<input type="text" id="company" style="width:160px"></label>
-  </div>
+ 
   <div class="header-row" style="margin-bottom:8px">
     <label>申請日期：</label>
     <div class="date-inputs">
@@ -233,20 +231,18 @@ textarea.filled { background:#f0fff4; }
  
 <script>
 function fillAmount(val) {
-  // 移除 NT$、逗號等非數字字元
   const num = parseInt(String(val).replace(/[^0-9]/g,'') || 0);
-  // 用除法正確拆位：千萬,百萬,十萬,萬,千,百,十
   const digits = [
-    Math.floor(num / 10000000) % 10,  // n1 千萬
-    Math.floor(num / 1000000)  % 10,  // n2 百萬
-    Math.floor(num / 100000)   % 10,  // n3 十萬
-    Math.floor(num / 10000)    % 10,  // n4 萬
-    Math.floor(num / 1000)     % 10,  // n5 千
-    Math.floor(num / 100)      % 10,  // n6 百
-    Math.floor(num / 10)       % 10,  // n7 十
+    Math.floor(num / 10000000) % 10,
+    Math.floor(num / 1000000)  % 10,
+    Math.floor(num / 100000)   % 10,
+    Math.floor(num / 10000)    % 10,
+    Math.floor(num / 1000)     % 10,
+    Math.floor(num / 100)      % 10,
+    Math.floor(num / 10)       % 10,
   ];
   ['n1','n2','n3','n4','n5','n6','n7'].forEach((id,i) => {
-    document.getElementById(id).value = digits[i] === 0 ? '' : digits[i];
+    document.getElementById(id).value = digits[i] === 0 ? '' : String(digits[i]);
   });
 }
  
@@ -294,6 +290,17 @@ function autoFillFromURL() {
     const cb = document.getElementById('pay_'+p.get('pay').trim());
     if (cb) { cb.checked=true; filled=true; }
   }
+  if (p.get('date')) {
+    // 支援 2026/06/10 或 2026-06-10 格式
+    const dateStr = p.get('date');
+    const parts = dateStr.split(/[\/\-]/);
+    if (parts.length >= 3) {
+      document.getElementById('year').value = parts[0];
+      document.getElementById('month').value = parseInt(parts[1]);
+      document.getElementById('day').value = parseInt(parts[2]);
+      filled = true;
+    }
+  }
  
   if (filled) {
     document.getElementById('autofillBanner').style.display = 'flex';
@@ -311,11 +318,10 @@ function clearForm() {
   document.getElementById('year').value = t.getFullYear();
   document.getElementById('month').value = t.getMonth()+1;
   document.getElementById('day').value = t.getDate();
-  document.getElementById('company').value = '瑩墨股份有限公司';
+ 
 }
  
-// 預設值
-document.getElementById('company').value = '瑩墨股份有限公司';
+// 預設今天日期
 const t = new Date();
 document.getElementById('year').value = t.getFullYear();
 document.getElementById('month').value = t.getMonth()+1;
