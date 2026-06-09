@@ -186,14 +186,18 @@ textarea.filled { background:#f0fff4; }
           <span class="jiazi-char">元整</span>
         </div>
       </td>
-      <td class="label-cell">合計</td>
-      <td><input type="text" id="total" style="width:100%" placeholder="NT$"></td>
+      <td class="label-cell" style="white-space:nowrap">合計</td>
+      <td style="min-width:90px"><input type="text" id="total" style="width:100%;font-size:12px;font-weight:bold;" placeholder="NT$0"></td>
     </tr>
  
-    <tr class="sign-row">
-      <td colspan="2">董事長室：</td>
-      <td colspan="3">主管：</td>
-      <td colspan="3">申請人：<span id="applicant_show"></span></td>
+    <tr>
+      <td colspan="8" style="height:70px; border:1px solid #333; padding:0;">
+        <div style="display:flex; height:100%;">
+          <div style="flex:1; padding:8px; font-size:13px; vertical-align:top;">董事長室：</div>
+          <div style="flex:1; padding:8px; font-size:13px; vertical-align:top;">主管：</div>
+          <div style="flex:1; padding:8px; font-size:13px; vertical-align:top;">申請人：<span id="applicant_show"></span></div>
+        </div>
+      </td>
     </tr>
   </table>
  
@@ -241,8 +245,14 @@ function fillAmount(val) {
     Math.floor(num / 100)      % 10,
     Math.floor(num / 10)       % 10,
   ];
+  // 找到第一個非零的位置，之後的0都要顯示
+  let firstNonZero = digits.findIndex(d => d !== 0);
   ['n1','n2','n3','n4','n5','n6','n7'].forEach((id,i) => {
-    document.getElementById(id).value = digits[i] === 0 ? '' : String(digits[i]);
+    if (i < firstNonZero) {
+      document.getElementById(id).value = '';
+    } else {
+      document.getElementById(id).value = String(digits[i]);
+    }
   });
 }
  
@@ -314,18 +324,13 @@ function clearForm() {
   document.querySelectorAll('textarea').forEach(i => { i.value=''; i.classList.remove('filled'); });
   document.getElementById('applicant_show').textContent = '';
   document.getElementById('autofillBanner').style.display = 'none';
-  const t = new Date();
-  document.getElementById('year').value = t.getFullYear();
-  document.getElementById('month').value = t.getMonth()+1;
-  document.getElementById('day').value = t.getDate();
+  document.getElementById('year').value = '';
+  document.getElementById('month').value = '';
+  document.getElementById('day').value = '';
  
 }
  
-// 預設今天日期
-const t = new Date();
-document.getElementById('year').value = t.getFullYear();
-document.getElementById('month').value = t.getMonth()+1;
-document.getElementById('day').value = t.getDate();
+// 日期預設空白，由 Lark date 參數帶入
  
 document.getElementById('total').addEventListener('input', function(){ fillAmount(this.value); });
  
